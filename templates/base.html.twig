@@ -3,7 +3,8 @@
 	<head>
 		<meta charset="UTF-8">
 		<title>
-			{% block title %} Bienvenue sur lusopictours bonne visite!
+			{% block title %}
+				Bienvenue sur lusopictours bonne visite!
 			{% endblock %}
 		</title>
 		<link
@@ -11,21 +12,23 @@
 
 		<!-- Bootstrap  CSS -->
 		<link href="{{ asset('assets/css/bootstrap.min.css') }}" rel="stylesheet">
+		<link href="{{ asset('assets/css/lusopictours.css') }}" rel="stylesheet">
 	</head>
 
 	<body>
 		<header>
 			<nav class="navbar navbar-expand-lg navbar-dark bg-primary">
-				<div class="container-fluid">
-					<a class="navbar-brand" href="#">Navbar</a>
+				<div
+					class="container-fluid">
+					{# pour retourner a la page d'accueill on fait un path ici #}
+					<a class="navbar-brand" href="{{ path("app_home") }}"><img src="{{asset('build/img/logo.jpg')}}" alt="logo lusopictours"></a>
 					<button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
 						<span class="navbar-toggler-icon"></span>
 					</button>
 					<div class="collapse navbar-collapse" id="navbarSupportedContent">
 						<ul class="navbar-nav me-auto mb-2 mb-lg-0">
-							<li class="nav-item">
-								<a class="nav-link active" aria-current="page" href="#">Home</a>
-							</li>
+
+
 							<li class="nav-item">
 								<a class="nav-link" href="#">Link</a>
 							</li>
@@ -50,19 +53,32 @@
 								<a class="nav-link disabled" href="#" tabindex="-1" aria-disabled="true">Disabled</a>
 							</li>
 						</ul>
-						<form class="d-flex">
-							<input class="form-control me-2" type="search" placeholder="Search" aria-label="Search">
-							<button class="btn btn-outline-success" type="submit">Search</button>
-						</form>
+
+						<div class="blanche">
+							{% if app.user %}
+								<a class="navbar-brand " href="{{ path('app_account') }}">
+									Mon compte
+									{# <small>({{app.user.firstname}})</small> #}
+								</a>
+								|
+								<a  href="{{ path('app_logout') }}">Déconnexion</a>
+							{% else %}
+								<a href="{{ path('app_login') }}">
+									Connexion</a>
+								|
+								<a  href="{{ path('app_register') }}">Inscription</a>
+								{% endif%}
+							</div>
+						</div>
 					</div>
-				</div>
-			</nav>
-		</header>
-		<main>
-			{% block body %}{% endblock %}
-		</main>
-		<!-- Bootstrap js and jquery -->
-		<script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
-		<script src="{{ asset('assets/js/bootstrap.bundle.js') }}"></script>
+				</nav>
+			</header>
+			<main>
+				{% block body %}{% endblock %}
+			</main>
+			<!-- Bootstrap js and jquery -->
+			<script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
+			<script src="{{ asset('assets/js/bootstrap.bundle.js') }}"></script>
+		</body>
 	</body>
 </html>
