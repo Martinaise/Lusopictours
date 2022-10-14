@@ -1,0 +1,14 @@
+{% extends "base.html.twig" %}
+{% block title %}Modifier mon profil-lusopictours!{% endblock %}
+
+{% block body %}
+<div class="container mt-5">
+<h1>Modifier mon profil</h1>
+<a href="{{  path('app_account_profil') }}">Retourner à mon compte </a><br>
+{%  if notification %}
+<div class="alert alert-info">{{ notification}}</div>
+{% endif %}
+{{form(formulaire)}}
+</div>
+
+{% endblock %}

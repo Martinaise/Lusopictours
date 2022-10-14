@@ -1,0 +1,37 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}{{appart.name}}{% endblock %}
+
+{% block body %}
+
+<div class="container">
+<h1>{{appart.name}}</h1>
+  <img src="/img/{{ appart.image }}" alt="{{appart.name}}" class="img-fluid">
+<p>{{appart.adresse}},{{appart.cp}}, {{appart.ville}},{{appart.pays}}</p>
+<div>
+<h5>A propos de ce logement</h5>
+<p> {{appart.description}}</p>
+</div>
+<p>nb_personne {{appart.nb_personne}}</p>
+<p>nb_chambre {{appart.nb_chambre}}</p>
+<p> nb_coucharge {{appart.nb_coucharge}}</p>
+<p> vues_panoramiques {{appart.vues_panoramiques}}</p>
+<p> salle_bain {{appart.salle_bain}}</p>
+<p>chambre_linge {{appart.chambre_linge}}</p>
+<p>divertissement {{appart.divertissement}}</p>
+<p>famille {{appart.famille}}</p>
+<p>chauffage_climatisation {{appart.chauffage_climatisation}}</p>
+<p> securite_maison {{appart.securite_maison}}</p>
+<p>internet_bureau {{appart}}</p>
+<p> cuisine_salle_manger {{appart.carateriques_emplacement}}</p>
+<p>carateriques_emplacement {{appart.carateriques_emplacement}} </p>
+<p>exterieur {{appart.exterieur}}</p>
+<p>parking_installations {{appart}}</p>
+<p>services {{appart.services}}</p>
+<p>category  {{appart.category}}</p>
+
+<pre>
+    {{ dump(appart) }}
+</pre>
+</div>
+{% endblock %}

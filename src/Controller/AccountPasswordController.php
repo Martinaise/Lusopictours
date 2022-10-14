@@ -19,10 +19,10 @@ class AccountPasswordController extends AbstractController
         $this->entityManager=$entityManager;
         
     }
-    #[Route('/compte/modifier-mon-mot-de-passe', name: 'app_account_password')]
+    #[Route('/mon-compte/modifier-mon-mot-de-passe', name: 'app_account_password')]
     public function index(Request $request,UserPasswordEncoderInterface $encoder): Response
     
-    { 
+    {  $notification = null;
         // on récupère les informationde du user connecter
         $user = $this->getUser();
         // on construit le formulaire avec la méthode creatform 
@@ -47,8 +47,6 @@ class AccountPasswordController extends AbstractController
             $notification = "votre mot de passe actuel n'est pas le bon";
 
           }
-
-
         
 
         }
